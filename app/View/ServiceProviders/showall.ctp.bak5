@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <div class="portlet box red">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-cogs"></i>Users
+
+            </div>
+
+        </div>
+        <div class="portlet-body">
+
+            <div class="table-scrollable">
+                <?php if (in_array($this->Session->read('User.User.permission_id'), array('1' , '2'))) { ?>
+                    <a href="<?php echo $this->Html->url(array("controller" => "users", "action" => "add")); ?>" >
+                        <button type="button" class="btn btn-success">ADD New User</button></a>
+                <?php } ?>
+                <table class="TFtable table table-bordered" >
+                    <thead class="flip-content" >
+                        <tr style="border-bottom: 3px solid silver; ">
+                            <th width="10%"  style="font-weight: bold; font-size: 18px; background-color: #0f5d8d; color: white; ">
+                                ID
+                            </th>
+                            <th width="15%"  style="font-weight: bold; font-size: 18px; background-color: #0f5d8d; color: white; ">
+                                User Name
+                            </th>
+                            <th width="15%"  style="font-weight: bold; font-size: 18px; background-color: #0f5d8d; color: white; ">
+                                Password
+                            </th>
+                            <th width="15%"  style="font-weight: bold; font-size: 18px; background-color: #0f5d8d; color: white; ">
+                                Email
+                            </th>
+                            <th width="25%"  style="font-weight: bold; font-size: 18px; background-color: #0f5d8d; color: white; ">
+                                Department
+                            </th>
+                            <th width="10%"  style="font-weight: bold; font-size: 18px; background-color: #0f5d8d; color: white; ">
+                                Permission
+                            </th>
+                            <th width="25%" COLSPAN=2 width="5%" style="font-weight: bold; font-size: 18px; background-color: #0f5d8d; color: white; ">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($Users as $key => $User) { ?>
+                            <tr >
+
+                                <td  style="text-align: center; font-size: 15px; font-weight: bold;">
+                                    <?php echo $User['User']['id']; ?>
+                                </td>
+                                <td  style="text-align: center; font-size: 15px; font-weight: bold;">
+                                    <?php echo $User['User']['name']; ?>
+                                </td>
+                                <td  style="text-align: center; font-size: 15px; font-weight: bold;">
+                                    <?php echo $User['User']['password']; ?>
+                                </td>
+                                <td  style="text-align: center; font-size: 15px; font-weight: bold;">
+                                    <?php echo $User['User']['email']; ?>
+                                </td>
+                                <td  style="text-align: center; font-size: 15px; font-weight: bold;">
+                                     <?php echo $User['Department']['name']; ?>
+                                </td>
+                                <td  style="text-align: center; font-size: 15px; font-weight: bold;">
+                                    <?php echo $User['Permission']['name']; ?>
+                                </td>
+                                <td  style="text-align: center; font-size: 15px; font-weight: bold;">
+                                    
+                                    <a style="margin: 5px;" href="<?php echo $this->Html->url(array("controller" => "users", "action" => "edit", $User['User']['id'])); ?>" class="btn default btn-xs red">
+                                        <i class="fa fa-edit"></i> Edit </a>
+                                    
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</html>
